@@ -2,7 +2,7 @@ from zzcore import StdAns, mysakuya
 
 
 class Ans(StdAns):
-    NotAllowGroup = [204097403]
+    NotAllowGroup = [204097403, 1107535671]
 
     def CheckPermission(self):
         if self.gid in self.NotAllowGroup:
@@ -12,7 +12,7 @@ class Ans(StdAns):
     def GETMSG(self):
         if self.parms:
 
-            if mysakuya(self, self.raw_msg['message']) == False:
+            if mysakuya(self, self.raw_msg['raw_message']) == False:
                 return "咲夜是最完美的！！"
                 
             return '咱也不知道' + self.parms[0] + '是啥呢~'

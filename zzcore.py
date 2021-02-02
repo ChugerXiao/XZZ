@@ -12,11 +12,12 @@ class StdAns():
     UserNotAllow = '汝不被允许呢.'
     RoleNotAllow = '汝的角色不被允许哦.'
 
-    def __init__(self,parms,uid,gid,role,raw_msg):
+    def __init__(self,parms,uid,gid,role,mid,raw_msg):
         self.parms = parms
         self.uid = uid
         self.gid = gid
         self.role = role
+        self.mid = mid
         self.raw_msg = raw_msg
 
     def DATAGET(self):
@@ -48,6 +49,14 @@ class StdAns():
             }
         return requests.get(url = url, params=data).json()['data']['message_id']
 
+    def get_img(self,cache_name):
+        url = APIURL + "get_image"
+
+        data = {
+            'access_token' : AUTHORIZATION,
+            'file': cache_name
+            }
+        return requests.get(url = url, params=data).json()['data']['url']
 
     def delmsg(self,msgid):
         url = APIURL + "delete_msg"
